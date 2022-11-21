@@ -4,16 +4,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class TipeNotasValdiator {
-    private static List<String> notasValidas= new ArrayList<String>(){
-        {
-            add("C");
-            add("B");
-            add("A");
-            add("AD");
-        }
-    };
+    private static final List<String> notasValidas= new ArrayList<String>();
+
+
 
     public static Boolean validateNotas(String nota){
+        notasValidas.add("C");
+        notasValidas.add("B");
+        notasValidas.add("A");
+        notasValidas.add("AD");
         for (String n:
              notasValidas) {
             if (n.equals(nota)){
