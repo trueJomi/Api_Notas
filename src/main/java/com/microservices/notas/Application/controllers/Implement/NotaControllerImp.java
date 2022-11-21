@@ -14,6 +14,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("nota")
 public class NotaControllerImp implements NotaController {
@@ -47,6 +49,34 @@ public class NotaControllerImp implements NotaController {
         Nota nota = notaService.buscarPorId(id);
         NotaDto response = notaConverter.fromEntity(nota);
         return new WrapperResponse<NotaDto>(response).createResponse();
+    }
+
+    @Override
+    public ResponseEntity<WrapperResponse<List<NotaDto>>> ListarByCusoAndBimestre(Integer curso, Integer bimestre) {
+        List<Nota> nota = notaService.ListarByCursoAndBimestre(curso,bimestre);
+        List<NotaDto> response = notaConverter.fromEntity(nota);
+        return new WrapperResponse<List<NotaDto>>(response).createResponse();
+    }
+
+    @Override
+    public ResponseEntity<WrapperResponse<List<NotaDto>>> ListarByEstudianteAndYear(Integer estudiante, Integer year) {
+        List<Nota> nota = notaService.ListarByEstudianteAndYear(estudiante, year);
+        List<NotaDto> response = notaConverter.fromEntity(nota);
+        return new WrapperResponse<List<NotaDto>>(response).createResponse();
+    }
+
+    @Override
+    public ResponseEntity<WrapperResponse<List<NotaDto>>> ListarByEstudianteAndBimestre(Integer estudiante, Integer bimestre) {
+        List<Nota> nota = notaService.ListarByEstudianteAndBimestre(estudiante, bimestre);
+        List<NotaDto> response = notaConverter.fromEntity(nota);
+        return new WrapperResponse<List<NotaDto>>(response).createResponse();
+    }
+
+    @Override
+    public ResponseEntity<WrapperResponse<List<NotaDto>>> ListarByEstudiante(Integer estudiante) {
+        List<Nota> nota = notaService.ListarByEstudiante(estudiante);
+        List<NotaDto> response = notaConverter.fromEntity(nota);
+        return new WrapperResponse<List<NotaDto>>(response).createResponse();
     }
 
     @Override

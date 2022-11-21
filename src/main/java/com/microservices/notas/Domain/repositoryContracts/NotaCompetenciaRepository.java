@@ -4,13 +4,13 @@ import com.microservices.notas.Domain.entities.NotaCompetencia;
 
 import java.util.List;
 
-public interface NotaComponentciaRepository {
+public interface NotaCompetenciaRepository {
 
     NotaCompetencia guardarNotaCompetencia(NotaCompetencia notaCompetencia);
 
     NotaCompetencia buscarPorId(Integer id);
 
-    List<NotaCompetencia> notaCompetenciaByCompetenciaAndBimestre(String competencia, Integer bimestre);
+    List<NotaCompetencia> notaCompetenciaByCompetenciaAndBimestre(Integer competencia, Integer bimestre);
 
     List<NotaCompetencia> notaCompetenciaByEstudianteAndYear(Integer estudiante, Integer year);
 

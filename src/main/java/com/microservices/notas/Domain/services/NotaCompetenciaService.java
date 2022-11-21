@@ -11,7 +11,7 @@ public interface NotaCompetenciaService {
 
     NotaCompetencia buscarPorId(Integer id);
 
-    List<NotaCompetencia> ListarByCompetenciaAndBimestre(String competencia, Integer bimestre);
+    List<NotaCompetencia> ListarByCompetenciaAndBimestre(Integer competencia, Integer bimestre);
 
     List<NotaCompetencia> ListarByEstudianteAndYear(Integer estudiante, Integer year);
 

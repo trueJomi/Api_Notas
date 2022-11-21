@@ -11,6 +11,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("notaActitudinal")
 public class NotaActitudinalControllerImp implements NotaActitudinalController {
@@ -44,6 +46,34 @@ public class NotaActitudinalControllerImp implements NotaActitudinalController {
         NotaActitudinal notaActitudinal = notaActitudinalService.buscarPorId(id);
         NotaActitudinalDto response = notaActitudinalConverter.fromEntity(notaActitudinal);
         return new WrapperResponse<NotaActitudinalDto>(response).createResponse();
+    }
+
+    @Override
+    public ResponseEntity<WrapperResponse<List<NotaActitudinalDto>>> ListarByEstudiantes(Integer estudiante) {
+        List<NotaActitudinal> notaActitudinal = notaActitudinalService.ListarByEstudiante(estudiante);
+        List<NotaActitudinalDto> response = notaActitudinalConverter.fromEntity(notaActitudinal);
+        return new WrapperResponse<List<NotaActitudinalDto>>(response).createResponse();
+    }
+
+    @Override
+    public ResponseEntity<WrapperResponse<List<NotaActitudinalDto>>> ListarByEstudiantesAndBimestre(Integer estudiante, Integer bimestre) {
+        List<NotaActitudinal> notaActitudinal = notaActitudinalService.ListarEstudianteAndBimestre(estudiante,bimestre);
+        List<NotaActitudinalDto> response = notaActitudinalConverter.fromEntity(notaActitudinal);
+        return new WrapperResponse<List<NotaActitudinalDto>>(response).createResponse();
+    }
+
+    @Override
+    public ResponseEntity<WrapperResponse<List<NotaActitudinalDto>>> ListarByEstudianteAndYear(Integer estudiante, Integer year) {
+        List<NotaActitudinal> notaActitudinal = notaActitudinalService.ListarByYearAndEstudiante(estudiante,year);
+        List<NotaActitudinalDto> response = notaActitudinalConverter.fromEntity(notaActitudinal);
+        return new WrapperResponse<List<NotaActitudinalDto>>(response).createResponse();
+    }
+
+    @Override
+    public ResponseEntity<WrapperResponse<List<NotaActitudinalDto>>> ListarByBimestre(Integer bimestre) {
+        List<NotaActitudinal> notaActitudinal = notaActitudinalService.ListarByIdBimestre(bimestre);
+        List<NotaActitudinalDto> response = notaActitudinalConverter.fromEntity(notaActitudinal);
+        return new WrapperResponse<List<NotaActitudinalDto>>(response).createResponse();
     }
 
     @Override

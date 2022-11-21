@@ -2,7 +2,7 @@ package com.microservices.notas.Infraestructures.implement;
 
 import com.microservices.notas.Application.exceptions.ResourceNotFoundException;
 import com.microservices.notas.Domain.entities.NotaCompetencia;
-import com.microservices.notas.Domain.repositoryContracts.NotaComponentciaRepository;
+import com.microservices.notas.Domain.repositoryContracts.NotaCompetenciaRepository;
 import com.microservices.notas.Infraestructures.Repositories.NotaCompetenciaRepositoryJPA;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -10,7 +10,7 @@ import org.springframework.stereotype.Component;
 import java.util.List;
 
 @Component
-public class NotaCompetenciaImp implements NotaComponentciaRepository {
+public class NotaCompetenciaImp implements NotaCompetenciaRepository {
 
     @Autowired
     private NotaCompetenciaRepositoryJPA db;
@@ -26,7 +26,7 @@ public class NotaCompetenciaImp implements NotaComponentciaRepository {
     }
 
     @Override
-    public List<NotaCompetencia> notaCompetenciaByCompetenciaAndBimestre(String competencia, Integer bimestre) {
+    public List<NotaCompetencia> notaCompetenciaByCompetenciaAndBimestre(Integer competencia, Integer bimestre) {
         return db.notaCompetenciaByCompetenciaAndBimestre(competencia,bimestre);
     }
 

@@ -23,6 +23,6 @@ public interface NotaCompetenciaRepositoryJPA extends JpaRepository<NotaCompeten
     List<NotaCompetencia> notaCompetenciaByEstudianteAndYear(@Param("est")Integer idEstudiante, @Param("year") Integer year);
     @Query("SELECT nc FROM NotaCompetencia nc WHERE " +
             "nc.idCompetencia=:comp AND  nc.idBimestre.idBimestre=:bim")
-    List<NotaCompetencia> notaCompetenciaByCompetenciaAndBimestre(@Param("comp")String competencia,@Param("bim") Integer bimestre);
+    List<NotaCompetencia> notaCompetenciaByCompetenciaAndBimestre(@Param("comp")Integer competencia,@Param("bim") Integer bimestre);
 
 }

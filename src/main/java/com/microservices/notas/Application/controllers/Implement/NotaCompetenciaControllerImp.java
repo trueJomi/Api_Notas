@@ -11,6 +11,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("notaCompetencia")
 public class NotaCompetenciaControllerImp implements NotaCompetenciaController {
@@ -45,6 +47,34 @@ public class NotaCompetenciaControllerImp implements NotaCompetenciaController {
         NotaCompetencia notaCompetencia = notaCompetenciaService.buscarPorId(id);
         NotaCompetenciaDto response = notaCompetenciaConverter.fromEntity(notaCompetencia);
         return new WrapperResponse<NotaCompetenciaDto>(response).createResponse();
+    }
+
+    @Override
+    public ResponseEntity<WrapperResponse<List<NotaCompetenciaDto>>> ListarbyCompetenciaAndBimestre(Integer competencia, Integer bimestre) {
+        List<NotaCompetencia> notaCompetencia = notaCompetenciaService.ListarByCompetenciaAndBimestre(competencia, bimestre);
+        List<NotaCompetenciaDto> response = notaCompetenciaConverter.fromEntity(notaCompetencia);
+        return new WrapperResponse<List<NotaCompetenciaDto>>(response).createResponse();
+    }
+
+    @Override
+    public ResponseEntity<WrapperResponse<List<NotaCompetenciaDto>>> ListarbyEstudianteAndYear(Integer estudiante, Integer year) {
+        List<NotaCompetencia> notaCompetencia = notaCompetenciaService.ListarByEstudianteAndYear(estudiante, year);
+        List<NotaCompetenciaDto> response = notaCompetenciaConverter.fromEntity(notaCompetencia);
+        return new WrapperResponse<List<NotaCompetenciaDto>>(response).createResponse();
+    }
+
+    @Override
+    public ResponseEntity<WrapperResponse<List<NotaCompetenciaDto>>> ListarbyEstudianteAndBimestre(Integer estudiante, Integer bimestre) {
+        List<NotaCompetencia> notaCompetencia = notaCompetenciaService.ListarByEstudianteAndBimestre(estudiante, bimestre);
+        List<NotaCompetenciaDto> response = notaCompetenciaConverter.fromEntity(notaCompetencia);
+        return new WrapperResponse<List<NotaCompetenciaDto>>(response).createResponse();
+    }
+
+    @Override
+    public ResponseEntity<WrapperResponse<List<NotaCompetenciaDto>>> ListarbyEstudiante(Integer estudiante) {
+        List<NotaCompetencia> notaCompetencia = notaCompetenciaService.ListarByEstudiante(estudiante);
+        List<NotaCompetenciaDto> response = notaCompetenciaConverter.fromEntity(notaCompetencia);
+        return new WrapperResponse<List<NotaCompetenciaDto>>(response).createResponse();
     }
 
     @Override
