@@ -10,12 +10,8 @@ import lombok.Setter;
 public class NotaCompetenciaDto {
 
     private Integer idNotaComp;
-
     private String notaComp;
-
     private Integer idEstudiante;
-
     private Integer idCompetencia;
-
     private BimestreDto idBimestre;
 }

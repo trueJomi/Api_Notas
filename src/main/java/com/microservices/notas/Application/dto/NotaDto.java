@@ -8,6 +8,7 @@ import lombok.Setter;
 @Setter
 @Getter
 public class NotaDto {
+
     private Integer idNotaAcad;
     private String notaAcad;
     private Integer idEstudiante;
