@@ -17,7 +17,7 @@ public interface NotaController {
     ResponseEntity<WrapperResponse<NotaDto>> getById(@PathVariable("id") Integer id);
 
     @DeleteMapping("{id}")
-    ResponseEntity<WrapperResponse<NotaDto>> eliminarNotaCompetencia(@PathVariable("id") NotaDto notaDto);
+    ResponseEntity<WrapperResponse<NotaDto>> eliminarNotaCompetencia(@PathVariable("id") Integer id);
 
 
 

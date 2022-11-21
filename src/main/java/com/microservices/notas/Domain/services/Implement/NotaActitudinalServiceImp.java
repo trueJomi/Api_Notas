@@ -1,6 +1,7 @@
 package com.microservices.notas.Domain.services.Implement;
 
 import com.microservices.notas.Application.exceptions.GeneralServiceException;
+import com.microservices.notas.Application.exceptions.IncorrectResourceRequestException;
 import com.microservices.notas.Domain.entities.Bimestre;
 import com.microservices.notas.Domain.entities.NotaActitudinal;
 import com.microservices.notas.Domain.repositoryContracts.BimestreRepository;
@@ -30,7 +31,7 @@ public class NotaActitudinalServiceImp implements NotaActitudinalService {
     public NotaActitudinal guardarNotaActitudinal(NotaActitudinal notaActitudinal){
         Bimestre bimestre = bimestreRepository.buscarById(notaActitudinal.getIdBimestre().getIdBimestre());
         notaActitudinal.setIdBimestre(bimestre);
-        NotaActitudinalValidator.validateSave(notaActitudinal);
+//        NotaActitudinalValidator.validateSave(notaActitudinal);
         return notaActitudinalRepository.guardarNotaActitudinal(notaActitudinal);
     }
 
@@ -39,7 +40,7 @@ public class NotaActitudinalServiceImp implements NotaActitudinalService {
         Integer idNotaActitudinal= notaActitudinal.getIdNotaAct();
         NotaActitudinal editNotaActitudinal=notaActitudinalRepository.buscarPorId(idNotaActitudinal);
         if(!TipeNotasValdiator.validateNotas(notaActitudinal.getNotaAct())){
-            throw new GeneralServiceException("Nota no valida");
+            throw new IncorrectResourceRequestException("Nota no valida");
         }
         editNotaActitudinal.setNotaAct(notaActitudinal.getNotaAct());
         return notaActitudinalRepository.guardarNotaActitudinal(editNotaActitudinal);

@@ -1,6 +1,7 @@
 package com.microservices.notas.Domain.services.Implement;
 
 import com.microservices.notas.Application.exceptions.GeneralServiceException;
+import com.microservices.notas.Application.exceptions.IncorrectResourceRequestException;
 import com.microservices.notas.Domain.entities.Bimestre;
 import com.microservices.notas.Domain.entities.Nota;
 import com.microservices.notas.Domain.repositoryContracts.BimestreRepository;
@@ -28,7 +29,7 @@ public class NotaServiceImp implements NotaService {
     public Nota guardarNota(Nota nota) {
         Bimestre bimestre = bimestreRepository.buscarById(nota.getIdBimestre().getIdBimestre());
         nota.setIdBimestre(bimestre);
-        NotaValidator.validateSave(nota);
+//        NotaValidator.validateSave(nota);
         return notaRepository.guardarNota(nota);
     }
 
@@ -36,7 +37,7 @@ public class NotaServiceImp implements NotaService {
     public Nota editarNota(Nota nota) {
         Nota editNota=notaRepository.buscarPorId(nota.getIdNotaAcad());
         if(!TipeNotasValdiator.validateNotas(nota.getNotaAcad())){
-            throw new GeneralServiceException("Nota no valida");
+            throw new IncorrectResourceRequestException("Nota no valida");
         }
         editNota.setNotaAcad(nota.getNotaAcad());
         return notaRepository.guardarNota(editNota);

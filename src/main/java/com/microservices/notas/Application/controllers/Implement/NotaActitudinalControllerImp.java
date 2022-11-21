@@ -34,8 +34,8 @@ public class NotaActitudinalControllerImp implements NotaActitudinalController {
     @Override
     public ResponseEntity<WrapperResponse<NotaActitudinalDto>> editarNotaActitudinal(NotaActitudinalDto notaActitudinalDto) {
         NotaActitudinal notaActitudinal = notaActitudinalConverter.fromDTO(notaActitudinalDto);
-        NotaActitudinal notaActitudinalNew = notaActitudinalService.editarNotaActitudinal(notaActitudinal);
-        NotaActitudinalDto response = notaActitudinalConverter.fromEntity(notaActitudinalNew);
+        NotaActitudinal notaActitudinalEdit = notaActitudinalService.editarNotaActitudinal(notaActitudinal);
+        NotaActitudinalDto response = notaActitudinalConverter.fromEntity(notaActitudinalEdit);
         return new WrapperResponse<NotaActitudinalDto>(response).createResponse();
     }
 

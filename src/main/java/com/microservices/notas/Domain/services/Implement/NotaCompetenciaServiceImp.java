@@ -1,6 +1,7 @@
 package com.microservices.notas.Domain.services.Implement;
 
 import com.microservices.notas.Application.exceptions.GeneralServiceException;
+import com.microservices.notas.Application.exceptions.IncorrectResourceRequestException;
 import com.microservices.notas.Domain.entities.Bimestre;
 import com.microservices.notas.Domain.entities.NotaCompetencia;
 import com.microservices.notas.Domain.repositoryContracts.*;
@@ -27,7 +28,7 @@ public class NotaCompetenciaServiceImp implements NotaCompetenciaService {
     public NotaCompetencia guardarNotaCompetencia(NotaCompetencia notaCompetencia) {
         Bimestre bimestre = bimestreRepository.buscarById(notaCompetencia.getIdBimestre().getIdBimestre());
         notaCompetencia.setIdBimestre(bimestre);
-        NotaCompetenciaValidator.valdiateSave(notaCompetencia);
+//        NotaCompetenciaValidator.valdiateSave(notaCompetencia);
         return notaComponentciaRepository.guardarNotaCompetencia(notaCompetencia);
     }
 
@@ -35,7 +36,7 @@ public class NotaCompetenciaServiceImp implements NotaCompetenciaService {
     public NotaCompetencia editarNotaCompetencia(NotaCompetencia notaCompetencia) {
         NotaCompetencia oldNotaCompetencia= notaComponentciaRepository.buscarPorId(notaCompetencia.getIdNotaComp());
         if(!TipeNotasValdiator.validateNotas(notaCompetencia.getNotaComp())){
-            throw new GeneralServiceException("Nota no valida");
+            throw new IncorrectResourceRequestException("Nota no valida");
         }
         oldNotaCompetencia.setNotaComp(notaCompetencia.getNotaComp());
         return notaComponentciaRepository.guardarNotaCompetencia(oldNotaCompetencia);
